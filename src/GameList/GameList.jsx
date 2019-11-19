@@ -7,9 +7,23 @@ class GameList extends React.Component {
   constructor(props){
    super(props)
    this.state ={
-     gameList : []
+     gameList : [],
+     banGamesId : [],
+     filterd: false
     }
   };
+  
+  deleteGame = (id) => {
+    this.setState({
+      banGamesId : [...this.state.banGamesId, id]
+    })
+  };
+
+  toogleFilter = () => {
+      this.setState({
+      filterd : !this.state.filterd
+    })
+  }
 
   componentDidMount () {
     axios.get('https://wild-games.herokuapp.com/api/v1')
@@ -17,17 +31,24 @@ class GameList extends React.Component {
       this.setState({gameList : result.data})
       console.log(result.data)
     })
-    
   };
 
   render (){
     return (
       <Fragment>
-          {this.state.gameList.map(
+        <button onClick={this.toogleFilter}>Best Game</button>
+          {this.state.gameList
+          .filter(game => !this.state.banGamesId.includes(game.id))
+          .filter(game => !this.state.filterd || game.rating >= 4.5)
+          .map(
             game => {
-              return (<Game  game={game}/>)
-            }
-          )}
+              return (
+                <div>
+                  <Game  game={game}/>
+                  <button onClick={() => this.deleteGame(game.id)}> Delete</button>
+                </div>
+              )
+          })}
       </Fragment>)
   };
 };
