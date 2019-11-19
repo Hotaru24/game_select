@@ -1,0 +1,8 @@
+.GameCard {
+    display: flex;
+    justify-content: space-around;
+}
+
+.GamePictures{
+    width: 250px;
+}
