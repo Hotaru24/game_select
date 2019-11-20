@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import  './Game.css'
 
 class Game extends React.Component  {
@@ -16,7 +17,13 @@ class Game extends React.Component  {
           <p>Date : {this.props.game.released} | Grenre : {this.props.game.genres[0].name}</p>
           <h3>Note : {this.props.game.rating}</h3>
         </div>
-        
+        <Link to={{
+          pathname :`/jeu/screenshots/${this.props.game.id}`,
+          state : {
+            screenshots : this.props.game.short_screenshots
+          }}}>
+           <button>Screenshots</button> 
+          </Link>
       </div>
     )
   };
