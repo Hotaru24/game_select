@@ -9,7 +9,7 @@ class Game extends React.Component  {
     return(
       <div className="GameCard">
         <div>
-          <img className="GamePictures" src={this.props.game.background_image} />
+          <img className="GamePictures" src={this.props.game.background_image}  alt={this.props.game.name} />
         </div>
 
         <div>

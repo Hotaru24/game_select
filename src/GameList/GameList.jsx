@@ -41,9 +41,9 @@ class GameList extends React.Component {
           .filter(game => !this.state.banGamesId.includes(game.id))
           .filter(game => !this.state.filterd || game.rating >= 4.5)
           .map(
-            game => {
+            (game, index) => {
               return (
-                <div>
+                <div key={index}> 
                   <Game  game={game}/>
                   <button onClick={() => this.deleteGame(game.id)}> Delete</button>
                 </div>
