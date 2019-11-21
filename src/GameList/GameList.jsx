@@ -1,56 +1,48 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import axios from 'axios'
 import Game from '../Game/Game';
 import { thisExpression } from '@babel/types';
 
-class GameList extends React.Component {
-  constructor(props){
-   super(props)
-   this.state ={
-     gameList : [],
-     banGamesId : [],
-     filterd: false
-    }
-  };
+const GameList = () => {
+
+  const [gameList, setgameList]  = useState([]);
+  const [banGamesId, setbanGamesId]  = useState([]);
+  const [filterd, setfilterd] = useState(false);
   
-  deleteGame = (id) => {
-    this.setState({
-      banGamesId : [...this.state.banGamesId, id]
-    })
+  
+  const deleteGame = (id) => {
+    setbanGamesId([...banGamesId, id]);
   };
 
-  toogleFilter = () => {
-      this.setState({
-      filterd : !this.state.filterd
-    })
+  const toogleFilter = () => {
+    setfilterd(!filterd);
   }
 
-  componentDidMount () {
+  useEffect(() => {
     axios.get('https://wild-games.herokuapp.com/api/v1')
     .then((result) => {
-      this.setState({gameList : result.data})
+      setgameList(result.data)
       console.log(result.data)
     })
-  };
+  }) 
 
-  render (){
+  
     return (
       <Fragment>
-        <button onClick={this.toogleFilter}>Best Game</button>
+        <button onClick={toogleFilter}>Best Game</button>
           {this.state.gameList
-          .filter(game => !this.state.banGamesId.includes(game.id))
-          .filter(game => !this.state.filterd || game.rating >= 4.5)
+          .filter(game => !banGamesId.includes(game.id))
+          .filter(game => !filterd || game.rating >= 4.5)
           .map(
             (game, index) => {
               return (
                 <div key={index}> 
                   <Game  game={game}/>
-                  <button onClick={() => this.deleteGame(game.id)}> Delete</button>
+                  <button onClick={() => deleteGame(game.id)}> Delete</button>
                 </div>
               )
           })}
       </Fragment>)
-  };
 };
 
 export default GameList;

@@ -1,9 +1,8 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 
-class Screenshots extends React.Component  {
+const Screenshots = () =>  {
 
-  render () {
-    return(
+      return(
       <div>
         {this.props.location.state.screenshots
         .map( (screen, index) =>{
@@ -11,14 +10,10 @@ class Screenshots extends React.Component  {
                 <Fragment key={index}>
                   <img  src={screen.image} width='300' alt={index}/>
                 </Fragment>
-                
-            )}
-        )
-        
+            )})
         }
       </div>
     )
-  };
 };
 
 export default Screenshots;
