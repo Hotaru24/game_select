@@ -30,8 +30,7 @@ const GameList = () => {
     return (
       <Fragment>
         <button onClick={toogleFilter}>Best Game</button>
-          {this.state.gameList
-          .filter(game => !banGamesId.includes(game.id))
+          {gameList.filter(game => !banGamesId.includes(game.id))
           .filter(game => !filterd || game.rating >= 4.5)
           .map(
             (game, index) => {
