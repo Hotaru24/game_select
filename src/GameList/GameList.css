@@ -1,0 +1,12 @@
+.Nav {
+    background-color: black;
+    display : flex;
+    align-items: space-around ;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 85%;
+}

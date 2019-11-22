@@ -1,6 +1,8 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import axios from 'axios'
 import Game from '../Game/Game';
+import './GameList.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { thisExpression } from '@babel/types';
 
 const GameList = () => {
@@ -27,7 +29,11 @@ const GameList = () => {
   
     return (
       <Fragment>
-        <button onClick={toogleFilter}>Best Game</button>
+        <div className='Nav'>
+          <h1>Game List</h1>
+          <button onClick={toogleFilter}>Best games only</button>
+        </div>
+        <div className='cardList'>
           {gameList.filter(game => !banGamesId.includes(game.id))
           .filter(game => !filterd || game.rating >= 4.5)
           .map(
@@ -39,7 +45,9 @@ const GameList = () => {
                 </div>
               )
           })}
+        </div>
       </Fragment>)
 };
 
 export default GameList;
+

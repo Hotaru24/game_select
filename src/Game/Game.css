@@ -1,8 +1,9 @@
-.GameCard {
+.card {
+    width: 80%;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
 }
 
 .GamePictures{
-    width: 250px;
+    max-width:  250px !important;
 }
