@@ -2,31 +2,29 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import  './Game.css'
 
-class Game extends React.Component  {
+const Game = (props) =>  {
 
-
-  render () {
-    return(
+  return(
       <div className="GameCard">
         <div>
-          <img className="GamePictures" src={this.props.game.background_image}  alt={this.props.game.name} />
+          <img className="GamePictures" src={props.game.background_image}  alt={props.game.name} />
         </div>
 
         <div>
-          <h2>{this.props.game.name}</h2>
-          <p>Date : {this.props.game.released} | Grenre : {this.props.game.genres[0].name}</p>
-          <h3>Note : {this.props.game.rating}</h3>
+          <h2>{props.game.name}</h2>
+          <p>Date : {props.game.released} | Grenre : {props.game.genres[0].name}</p>
+          <h3>Note : {props.game.rating}</h3>
         </div>
         <Link to={{
-          pathname :`/jeu/screenshots/${this.props.game.id}`,
+          pathname :`/jeu/screenshots/${props.game.id}`,
           state : {
-            screenshots : this.props.game.short_screenshots
+            screenshots : props.game.short_screenshots
           }}}>
            <button>Screenshots</button> 
           </Link>
       </div>
     )
-  };
+  
 };
 
 export default Game;

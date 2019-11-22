@@ -1,19 +1,20 @@
 import React, {Fragment, useState} from 'react';
 
-const Screenshots = () =>  {
+const Screenshots = (props) =>  {
 
-      return(
-      <div>
-        {this.props.location.state.screenshots
+  return(
+    <div>
+        {props.location.state.screenshots
         .map( (screen, index) =>{
             return(
                 <Fragment key={index}>
                   <img  src={screen.image} width='300' alt={index}/>
                 </Fragment>
-            )})
-        }
-      </div>
-    )
+            )
+          }
+        )}
+    </div>
+  )
 };
 
 export default Screenshots;

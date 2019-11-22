@@ -8,8 +8,7 @@ const GameList = () => {
   const [gameList, setgameList]  = useState([]);
   const [banGamesId, setbanGamesId]  = useState([]);
   const [filterd, setfilterd] = useState(false);
-  
-  
+    
   const deleteGame = (id) => {
     setbanGamesId([...banGamesId, id]);
   };
@@ -25,7 +24,6 @@ const GameList = () => {
       console.log(result.data)
     })
   }) 
-
   
     return (
       <Fragment>
