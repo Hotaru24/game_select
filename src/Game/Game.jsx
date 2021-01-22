@@ -16,7 +16,7 @@ const Game = (props) =>  {
             <h5 className="card-title">{props.game.name}</h5>
             <p className="card-text">Date : {props.game.released} | Grenre : {props.game.genres[0].name}</p>
             <h3 className="card-text">Note : {props.game.rating} <Link to={{
-              pathname :`/jeu/screenshots/${props.game.id}`,
+              pathname :'/screenshots',
               state : {
                 screenshots : props.game.short_screenshots
               }}}>
